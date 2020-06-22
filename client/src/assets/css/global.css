@@ -10,5 +10,27 @@ body {
   font-family: 'Roboto', sans-serif;
   color: #333;
   -webkit-font-smoothing: antialiased;
-  background-color: #30313f;
+  background-color: #ddd;
+}
+
+header {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  background-color: #42403e
+}
+
+header .logo img {
+  height: 30px;
+}
+nav {
+  text-align: center;
+  flex: 1
+}
+nav a {
+  margin: 0 5px;
+  padding: 2px 5px;
+  color: #fff;
+  text-decoration: none;;
+  border-bottom: 1px solid #ddd;
 }

@@ -18,8 +18,8 @@ that I can import them into outlook.
 - [ ] Frontend (Client)
   - [x] Initialize react project with typescript
   - [ ] Define layout
-  - [ ] Component Header. Nav: Home, Report
-  - [ ] Page Home: Describe rules 
+  - [x] Component Header. Nav: Home, Report
+  - [x] Page Home: Describe rules 
   - [ ] Page Report
     - [ ] Component Filter by userID or Name, startDate, and endDate
     - [ ] Component Grid: Columns: Employee, Type, startDate, endDate, download ics, admin note, member note, 
