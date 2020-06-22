@@ -26,8 +26,8 @@ that I can import them into outlook.
   = [ ] Create Tests
 
 - [ ] Backend (Server)
-  - [ ] Initialize node project with typescript
-  - [ ] Config project: eslint, prettier, folders
+  - [x] Initialize node project with typescript
+  - [x] Config project: eslint, prettier, folders
   - [ ] Create route to find absences
   - [ ] Absence Repository: GetAll filtered by userID or userName, startDate, endDate
   - [ ] Absence Repository: Read json files and merge datas
