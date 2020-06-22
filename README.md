@@ -26,7 +26,7 @@ that I can import them into outlook.
   - [x] Page Home: Describe rules 
   - [ ] Page Report
     - [ ] Component Filter by userID or Name, startDate, and endDate
-    - [/] Component Grid: Columns: Employee, Type, startDate, endDate, download ics, admin note, member note, 
+    - [x] Component Grid: Columns: Employee, Type, startDate, endDate, download ics, admin note, and member note.
   = [ ] Create Tests
 
 - [ ] Backend (Server)

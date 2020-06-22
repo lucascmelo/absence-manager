@@ -64,6 +64,10 @@ class AbsencesRepository {
       );
     }
 
+    this.absences = this.absences.sort((a, b) => {
+      return new Date(a.startDate).getTime() - new Date(b.startDate).getTime();
+    });
+
     return this.absences;
   }
 
