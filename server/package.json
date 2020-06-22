@@ -8,6 +8,7 @@
     "dev:server": "ts-node-dev --inspect --transpileOnly --ignore node_modules src/server.ts"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "ics": "^2.22.1",
     "moment": "^2.27.0"
