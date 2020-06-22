@@ -29,7 +29,7 @@ that I can import them into outlook.
   - [x] Initialize node project with typescript
   - [x] Config project: eslint, prettier, folders
   - [x] Create route to find absences
-  - [ ] Absence Repository: GetAll filtered by userID or userName, startDate, endDate
+  - [/] Absence Repository: GetAll filtered by userID or userName, startDate, endDate
   - [ ] Absence Repository: Read json files and merge datas
   - [ ] Generate and save ONE ics file on specific folder. Find by absence id
   - [ ] Create route to download ics from specific absence. (Return path)
