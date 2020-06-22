@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;700&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -7,10 +8,11 @@
 
 body {
   font-size: 14px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
+
   color: #333;
   -webkit-font-smoothing: antialiased;
-  background-color: #ddd;
+  background-color: #fefdfb;
 }
 
 .loader {
@@ -28,6 +30,7 @@ body {
 }
 
 header {
+  margin-bottom: 60px;
   padding: 15px;
   display: flex;
   align-items: center;
@@ -43,7 +46,7 @@ header .logo img {
   margin: 0 auto;
 }
 
-nav a {
+header nav a {
   margin: 0 5px;
   padding: 2px 5px 10px;
   color: #fff;
@@ -68,7 +71,7 @@ nav a {
 #nav-main a:hover:after,
 #nav-main a.active:after {
   width: 100%;
-  background-color: #fff;
+  background-color: #ff9419;
 }
 
 .user-actions {
@@ -105,4 +108,14 @@ nav a {
 .icon-my-profile:before {
   position: relative;
   top: 0;
+}
+
+.container {
+  padding: 0 30px;
+}
+
+.page-title {
+  font-size: 22px;
+  margin-bottom: 30px;
+  color: #f19333
 }
