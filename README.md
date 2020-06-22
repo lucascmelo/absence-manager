@@ -16,7 +16,7 @@ that I can import them into outlook.
 
 ## TODO
 - [ ] Frontend (Client)
-  - [ ] Initialize react project with typescript
+  - [x] Initialize react project with typescript
   - [ ] Define layout
   - [ ] Component Header. Nav: Home, Report
   - [ ] Page Home: Describe rules 
