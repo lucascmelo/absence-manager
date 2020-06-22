@@ -37,14 +37,72 @@ header {
 header .logo img {
   height: 30px;
 }
-nav {
+
+#nav-main {
   text-align: center;
-  flex: 1
+  margin: 0 auto;
 }
+
 nav a {
   margin: 0 5px;
-  padding: 2px 5px;
+  padding: 2px 5px 10px;
   color: #fff;
-  text-decoration: none;;
-  border-bottom: 1px solid #ddd;
+  font-size: 35px;
+  position: relative;
+  text-decoration: none;
+  transition: .2s;
+}
+
+#nav-main a:after {
+  content: "";
+  width: 0;
+  height: 4px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border-radius: 2px;
+  transition: .2s;
+  background-color: transparent;
+}
+
+#nav-main a:hover:after,
+#nav-main a.active:after {
+  width: 100%;
+  background-color: #fff;
+}
+
+.user-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-actions a {
+  font-size: 28px;
+  padding: 0;
+}
+
+.user-actions .icon-alarm {
+  opacity: 0.5;
+  transition: .2s;
+}
+
+.user-actions .icon-alarm:hover {
+  opacity: 1;
+}
+
+.user-actions .icon-my-profile {
+  padding: 5px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  transition: .2s;
+}
+
+.icon-my-profile:hover {
+  border-color: #fff;;
+}
+
+.icon-my-profile:before {
+  position: relative;
+  top: 0;
 }
