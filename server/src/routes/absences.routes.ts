@@ -20,4 +20,17 @@ absencesRouter.get('/absences', async (request, response) => {
   }
 });
 
+absencesRouter.get('/download', async (request, response) => {
+  try {
+    const { id } = request.query;
+
+    const absence = await absencesRepository.find({ id });
+    const download = await absencesRepository.download(absence[0]);
+
+    return response.status(200).json(download);
+  } catch (err) {
+    return response.status(400).json({ error: err.message });
+  }
+});
+
 export default absencesRouter;
