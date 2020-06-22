@@ -1,36 +1,34 @@
+import fs from 'fs';
+import path from 'path';
+import moment from 'moment';
+import Absence from '../models/Absence';
+
 class AbsencesRepository {
-  private absences: [];
+  private absences: Absence[];
 
   constructor() {
     this.absences = [];
   }
 
-  public find({ userId, startDate, endDate }) {
-    const absences = [
-      {
-        admitterId: null,
-        admitterNote: '',
-        confirmedAt: '2016-12-12T18:03:55.000+01:00',
-        createdAt: '2016-12-12T14:17:01.000+01:00',
-        crewId: 352,
-        endDate: '2017-01-13',
-        id: 2351,
-        memberNote: '',
-        rejectedAt: null,
-        startDate: '2017-01-13',
-        type: 'sickness',
-        userId: 644,
-      },
-    ];
-    const members = [
-      {
-        crewId: 352,
-        id: 709,
-        image: 'http://place-hoff.com/300/400',
-        name: 'Max',
-        userId: 644,
-      },
-    ];
+  public async find({ userId, startDate, endDate }: Absence): Absence[] {
+    const ABSENCES_PATH = path.join(
+      __dirname,
+      '../json_files',
+      'absences.json',
+    );
+    const MEMBERS_PATH = path.join(__dirname, '../json_files', 'members.json');
+
+    const readJsonFile = path =>
+      new Promise(resolve =>
+        fs.readFile(path, 'utf8', (_, data) => resolve(data)),
+      )
+        .then(data => JSON.parse(data))
+        .then(data => data.payload);
+
+    const absences = await readJsonFile(ABSENCES_PATH);
+    const members = await readJsonFile(MEMBERS_PATH);
+
+    console.log(absences, members);
 
     this.absences = absences.map(absence => {
       const member = members.find(member => member.userId === absence.userId);
@@ -45,6 +43,16 @@ class AbsencesRepository {
         absence => absence.userId === parseInt(userId),
       );
     }
+
+    if (startDate && endDate) {
+      this.absences = this.absences.filter(
+        absence =>
+          moment(startDate).isBetween(absence.startDate, absence.endDate) ||
+          moment(endDate).isBetween(absence.startDate, absence.endDate),
+      );
+    }
+
+    console.log(this.absences);
 
     return this.absences;
   }
