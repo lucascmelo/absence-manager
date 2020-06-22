@@ -18,7 +18,7 @@ that I can import them into outlook.
 - [ ] Frontend (Client)
   - [x] Initialize react project with typescript
   - [ ] Define layout
-    - [ ] Header
+    - [x] Header
     - [ ] Home
     - [ ] Report Filter
     - [ ] Report Table
