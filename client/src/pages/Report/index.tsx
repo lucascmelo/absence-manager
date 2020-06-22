@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
-import Header from '../../components/Header'
+import Header from '../../components/Header';
+import Loader from '../../components/Loader';
 
 import './style.css';
 interface Absence {
@@ -12,15 +13,17 @@ interface Absence {
 }
 const Report: React.FC = () => {
   const [absences, setAbsences] = useState<Absence[]>([]);
-
   useEffect(() => {
-    api.get('/absences').then(response => {
-      setAbsences(response.data);
-    });
+    setTimeout(function(){
+      api.get('/absences').then(response => {
+        setAbsences(response.data);
+      });
+    }, 2500); // taking a while to see the loader
   }, []);
 
   return (
     <>
+      {absences.length==0 && <Loader />}
       <Header />
       <section>
         <h2>Report</h2>
