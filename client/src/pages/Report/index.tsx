@@ -32,6 +32,13 @@ const Report: React.FC = () => {
     setCurrentPage(page);
   }
 
+  function handleDownloadICal(id: number) {
+    api.get('/download', {params: {id: id}}).then(response => {
+      console.log(response.data.file)
+      window.open('file:'+response.data.file, 'Download');
+    });
+  }
+
   return (
     <>
       {absences.length==0 && <Loader />}
@@ -105,7 +112,7 @@ const Report: React.FC = () => {
                   <td>
                     <Moment format="DD/MM/YYYY">{absence.startDate}</Moment> to <Moment format="DD/MM/YYYY">{absence.endDate}</Moment></td>
                   <td>
-                    <a href="#download" data-id={absence.id}> Download Ical</a>
+                    <a href="#" onClick={() => handleDownloadICal(absence.id)}> Download Ical</a>
                     <a href="#notes" data-id={absence.id}>See note</a>
                   </td>
                 </tr>
