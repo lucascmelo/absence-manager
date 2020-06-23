@@ -114,7 +114,6 @@ table tr:hover td {
   background: #ebe4df;
 }
 
-
 table td a {
   margin: 0 10px 10px 0;
   padding: 3px 5px;
@@ -131,6 +130,65 @@ table td a:hover {
   color: #fff;
   border-color: #ff9419;
   background-color: #ff9419;
+}
+
+#detailsModal {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,.8);
+}
+
+#detailsModal section {
+  width: 450px;
+  position: relative;
+  background: #fff;
+}
+
+#detailsModal .icon-close {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 14px;
+  text-decoration: none;
+  background: #333;
+
+}
+
+#detailsModal h4 {
+  padding: 15px;
+  font-size: 16px;
+  background: #ddd;
+}
+
+#detailsModal ul {
+  padding: 15px;
+  list-style: none;
+  font-size: 16px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#detailsModal ul li {
+  min-width: 50%;
+  margin-bottom: 15px;
+  flex: 1;
+}
+
+#detailsModal ul li.modal--note {
+  min-width: 100%;
 }
 
 @media (max-width: 768px) {
@@ -183,6 +241,14 @@ table td a:hover {
   table td a {
     margin-bottom: 5px;
     display: inline-block;
+  }
+
+  #detailsModal section {
+    width: 90%;
+  }
+
+  #detailsModal ul li {
+    min-width: 100%;
   }
 }
 

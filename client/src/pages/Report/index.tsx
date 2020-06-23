@@ -3,6 +3,7 @@ import api from '../../services/api';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Loader from '../../components/Loader';
+import Details from '../../components/Details';
 import Moment from 'react-moment';
 import download from 'downloadjs';
 import "./style.css";
@@ -20,6 +21,7 @@ interface Absence {
 const Report: React.FC = () => {
   const [loaded, setLoaded] = useState<Number>(0);
   const [absences, setAbsences] = useState<Absence[]>([]);
+  const [absenceDetails, setAbsenceDetails] = useState<Absence[]>([]);
   const [totalPage, setTotalPage] = useState<Number>(0);
   const [currentPage, setCurrentPage] = useState<Number>(1);
 
@@ -65,18 +67,32 @@ const Report: React.FC = () => {
     setCurrentPage(page);
   }
 
-  function handleDownloadICal(id: number) {
-    api.get('/download', {params: {id: id}}).then(response => {
+  const handleCloseDetails = (event: any) => {
+    event.preventDefault();
+    setAbsenceDetails([]);
+  }
+
+  const handleDetails = (event:any) => {
+    event.preventDefault();
+    const id = event.target.getAttribute('data-id');
+    const absence = absences.filter(absence => absence.id === parseInt(id));
+    setAbsenceDetails(absence);
+  }
+
+  const handleDownloadICal = (event:any) => {
+    event.preventDefault();
+    api.get('/download', {params: {id: event.target.getAttribute('data-id')}}).then(response => {
       download(response.data.ics, "event.ics");
     });
   }
 
   return (
     <>
-      {loaded===0 && <Loader />}
+      {/* {loaded===0 && <Loader />} */}
       <Header />
       <section className="container">
         <h2 className="page-title">Absence Management</h2>
+
         <nav className="absence-tab">
           <a href="#">Calendar</a>
           <a href="#">Statistics</a>
@@ -85,7 +101,7 @@ const Report: React.FC = () => {
           <a href="#" className='active'>List</a>
         </nav>
 
-        <form action="">
+        <form>
           <fieldset>
             <legend>Filter</legend>
             <div className="fields">
@@ -147,8 +163,8 @@ const Report: React.FC = () => {
                   </td>
                   <td data-title="Status">{(absence.confirmedAt == null && absence.rejectedAt == null) ? 'Pending' : (absence.confirmedAt==null) ? 'Rejected' : 'Approved' }</td>
                   <td>
-                    <a href="#" onClick={() => handleDownloadICal(absence.id)}> Download Ical</a>
-                    <a href="#notes" data-id={absence.id}>See note</a>
+                    <a href="#" data-id={absence.id} onClick={handleDownloadICal}> Download Ical</a>
+                    <a href="#" data-id={absence.id} onClick={handleDetails}>See note</a>
                   </td>
                 </tr>
                 )}
@@ -161,6 +177,7 @@ const Report: React.FC = () => {
             )}
           </tbody>
         </table>
+
         <ul className="pagination">
           {[...Array(totalPage)].map((x, i) => {
             let page = ++i;
@@ -170,6 +187,7 @@ const Report: React.FC = () => {
           })}
         </ul>
       </section>
+      {absenceDetails.length>0 && <Details data={absenceDetails} func={handleCloseDetails} />}
       <Footer />
     </>
   )
