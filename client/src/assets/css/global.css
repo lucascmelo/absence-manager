@@ -121,7 +121,7 @@ header nav a {
 }
 
 .pagination {
-  margin: 15px 0;
+  margin: 30px 0;
   padding: 0;
   display: flex;
   justify-content: center;
@@ -153,7 +153,98 @@ header nav a {
 footer {
   width: 100%;
   margin-top: 30px;
-  padding: 30px 30px;
+  padding: 30px 100px;
   display: flex;
+  justify-content: space-between;
   border-top: 2px solid #f19333;
+}
+
+footer h3 {
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: #333;
+  font-weight: 400;
+}
+
+footer ul {
+  margin-bottom: 30px;
+  list-style: none;
+}
+
+footer li a {
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: 300;
+  color: #444;
+}
+
+
+@media (max-width: 991px) {
+  header .logo img {
+    height: 20px;
+  }
+  footer {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    position: relative;
+    flex-direction: column;
+  }
+
+  header .logo {
+    margin: 0 auto 25px 0;
+  }
+
+  #nav-main a {
+    font-size: 28px;
+  }
+
+  .user-actions {
+    position: absolute;
+    top: 20px;
+    right: 15px;
+  }
+
+  .user-actions a {
+    font-size: 24px;
+  }
+
+  .container {
+    padding: 0 15px;
+  }
+}
+
+@media (max-width: 860px) {
+  footer {
+    flex-wrap: wrap;
+    padding: 30px;
+  }
+
+  footer .footer--links:last-child {
+    width: 100%;
+    text-align: center;;
+    flex: 1;
+  }
+}
+@media (max-width: 600px) {
+  footer {
+    flex-direction: column;
+  }
+
+  footer ul {
+    display: none;
+  }
+
+  footer h3:after {
+    content: "▼";
+    margin-left: 10px;
+    font-size: 10px;
+  }
+
+  footer h3:active + ul {
+    display: block;
+  }
 }

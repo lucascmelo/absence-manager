@@ -34,7 +34,7 @@ const Report: React.FC = () => {
       setTimeout(function(){
         setLoaded(1);
       }, 2500); // taking a while to see the loader
-      
+
       setAbsences(response.data);
       setTotalPage(Math.ceil(response.data.length/10));
     });
@@ -140,12 +140,12 @@ const Report: React.FC = () => {
               if(currentPage == page) {
                 return (
                 <tr data-page={page} key={absence.id} >
-                  <td>{absence.employee}</td>
-                  <td>{absence.type === "vacation" ? "is on vacation" : "is sick"}</td>
-                  <td>
+                  <td data-title="Name">{absence.employee}</td>
+                  <td data-title="Absence Types">{absence.type === "vacation" ? "is on vacation" : "is sick"}</td>
+                  <td data-title="Period">
                     <Moment format="DD/MM/YYYY">{absence.startDate}</Moment> to <Moment format="DD/MM/YYYY">{absence.endDate}</Moment>
                   </td>
-                  <td>{(absence.confirmedAt == null && absence.rejectedAt == null) ? 'Pending' : (absence.confirmedAt==null) ? 'Rejected' : 'Approved' }</td>
+                  <td data-title="Status">{(absence.confirmedAt == null && absence.rejectedAt == null) ? 'Pending' : (absence.confirmedAt==null) ? 'Rejected' : 'Approved' }</td>
                   <td>
                     <a href="#" onClick={() => handleDownloadICal(absence.id)}> Download Ical</a>
                     <a href="#notes" data-id={absence.id}>See note</a>

@@ -50,11 +50,12 @@ fieldset legend {
 
 .fields {
   display: flex;
+  flex-wrap: wrap;
   font-size: 16px;
 }
 
 .fields div {
-  margin-right: 15px;
+  margin: 0 15px 15px;
 }
 
 .fields div:last-child {
@@ -115,8 +116,9 @@ table tr:hover td {
 
 
 table td a {
-  margin-right: 10px;
+  margin: 0 10px 10px 0;
   padding: 3px 5px;
+  display: inline-block;
   border: 1px solid #333;
   border-radius: 5px;
   text-decoration: none;
@@ -130,3 +132,57 @@ table td a:hover {
   border-color: #ff9419;
   background-color: #ff9419;
 }
+
+@media (max-width: 768px) {
+  .fields div {
+    margin: 0 7.5px 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  .absence-tab,
+  .fields {
+    flex-direction: column;
+  }
+
+  .absence-tab,
+  .fields div {
+    margin: 0 0 15px;
+  }
+
+  .fields select,
+  .fields input {
+    width: 100%;
+  }
+
+  table,
+  table tbody,
+  table tr {
+    display: flex;
+    flex-direction: column;
+  }
+
+  table thead {
+    display: none;
+  }
+
+  table tr {
+    margin-bottom: 10px;
+  }
+
+  table td {
+    padding: 10px 15px;
+  }
+
+  table td:before {
+    content: attr(data-title);
+    display: block;
+    font-weight: 700;
+  }
+
+  table td a {
+    margin-bottom: 5px;
+    display: inline-block;
+  }
+}
+

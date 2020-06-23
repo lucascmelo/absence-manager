@@ -4,7 +4,7 @@ const Footer: React.FC = () => (
   <footer>
     <div className="footer--links">
       <h3>Produkte</h3>
-      <ul className="footer--link-list">
+      <ul>
         <li><a target="_blank" href="https://crewmeister.com/de/zeiterfassung/mobil/">Stempeluhr App</a></li>
         <li><a target="_blank" href="https://crewmeister.com/de/zeiterfassung/zeiterfassungsterminal/">Terminal</a></li>
         <li><a target="_blank" href="https://crewmeister.com/de/zeiterfassung/">Zeiterfassung</a></li>
@@ -17,7 +17,7 @@ const Footer: React.FC = () => (
 
     <div className="footer--links">
       <h3>Informationen</h3>
-      <ul className="footer--link-list">
+      <ul>
         <li><a target="_blank"  href="https://crewmeister.com/de/magazin/">Magazin</a></li>
         <li><a target="_blank"  href="https://crewmeister.com/de/kontakt/">Kontakt</a></li>
         <li><a target="_blank"  href="https://crewmeister.com/de/karriere/">Karriere</a></li>
@@ -32,14 +32,14 @@ const Footer: React.FC = () => (
 
     <div className="footer--links">
       <h3>Kundenmeinungen/ Branchen</h3>
-      <ul className="footer--link-list">
+      <ul>
         <li><a target="_blank" href="https://crewmeister.com/de/branchen/gebaeudereinigung/">Zeiterfassung Gebäudereinigung</a></li>
         <li><a target="_blank" href="https://crewmeister.com/de/handwerk/">Zeiterfassung Handwerk</a></li>
         <li><a target="_blank" href="https://crewmeister.com/de/branchen/vereine/">Zeiterfassung Vereine</a></li>
       </ul>
 
       <h3>Soziale Medien</h3>
-      <ul className="footer--link-list">
+      <ul>
         <li><a href="//www.facebook.com/crewmeister" target="_blank"><span className="icon-facebook-square"></span> Facebook</a></li>
         <li><a href="//twitter.com/crewmeister_com" target="_blank"><span className="icon-twitter-square"></span> Twitter</a></li>
         <li><a href="//www.linkedin.com/company/crewmeister" target="_blank"><span className="icon-linkedin-square"></span> LinkedIn</a></li>
@@ -48,9 +48,7 @@ const Footer: React.FC = () => (
     </div>
 
     <div className="footer--links">
-      <ul className="footer--link-list">
-        <img alt="made with love in Germany" src="https://d33wubrfki0l68.cloudfront.net/eeee739497abc1932e3d90eec18a6757013b31e1/26723/images/de/testimonials/mwl1.png"/>
-      </ul>
+      <img alt="made with love in Germany" src="https://d33wubrfki0l68.cloudfront.net/eeee739497abc1932e3d90eec18a6757013b31e1/26723/images/de/testimonials/mwl1.png"/>
     </div>
   </footer>
 )

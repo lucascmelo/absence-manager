@@ -17,11 +17,12 @@ that I can import them into outlook.
 ## TODO
 - [ ] Frontend (Client)
   - [x] Initialize react project with typescript
-  - [ ] Define layout
+  - [x] Define layout
     - [x] Header
-    - [ ] Report Filter
-    - [ ] Report Table
-    - [ ] Footer
+    - [x] Report Filter
+    - [x] Report Table
+    - [x] Footer
+    - [x] Responsive
   - [x] Component Header. Nav: Home, Report
   - [ ] Page Report
     - [x] Component Filter by Name, startDate, endDate, Types, Status
