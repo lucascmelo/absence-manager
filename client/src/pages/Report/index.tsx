@@ -44,7 +44,7 @@ const Report: React.FC = () => {
 
   useEffect(() => {
     if(nameFilter !== "" || typeFilter !== "" || statusFilter !== "" || startFilter !== "" || endFilter !== "") {
-      console.log(startFilter);
+      setCurrentPage(1);
       api.get('/absences', {
         params: {
           employee: nameFilter,
