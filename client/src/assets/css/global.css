@@ -119,3 +119,41 @@ header nav a {
   margin-bottom: 30px;
   color: #f19333
 }
+
+.pagination {
+  margin: 15px 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+}
+
+.pagination li {
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: 1px solid #333;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.pagination li:hover {
+  background: #ddd;
+}
+
+.pagination li.active {
+  color: #fff;
+  font-weight: 700;
+  border-color: #f19333;
+  background: #f19333;
+}
+
+footer {
+  width: 100%;
+  margin-top: 30px;
+  padding: 30px 30px;
+  display: flex;
+  border-top: 2px solid #f19333;
+}

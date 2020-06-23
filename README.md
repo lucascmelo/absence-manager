@@ -19,14 +19,15 @@ that I can import them into outlook.
   - [x] Initialize react project with typescript
   - [ ] Define layout
     - [x] Header
-    - [ ] Home
     - [ ] Report Filter
     - [ ] Report Table
+    - [ ] Footer
   - [x] Component Header. Nav: Home, Report
-  - [x] Page Home: Describe rules 
   - [ ] Page Report
     - [ ] Component Filter by userID or Name, startDate, and endDate
-    - [x] Component Grid: Columns: Employee, Type, startDate, endDate, download ics, admin note, and member note.
+    - [x] Component Grid: Columns: Employee, Type, startDate, endDate, download ics, see note
+    - [ ] Modal with more details admin/members note, Employee, type, startDate, end Date
+    - [x] Pagination
   = [ ] Create Tests
 
 - [ ] Backend (Server)

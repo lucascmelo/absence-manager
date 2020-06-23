@@ -1,0 +1,132 @@
+.absence-tab {
+  display: flex;
+}
+.absence-tab a {
+  margin: 0 5px;
+  padding: 0 10px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  position: relative;
+  color: #999;
+  transition: .2s;
+}
+
+.absence-tab a:hover,
+.absence-tab a.active {
+  color: #333;
+}
+
+.absence-tab a:before {
+  content: "";
+  width: 0;
+  height: 4px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border-radius: 2px;
+  transition: .2s;
+  background-color: transparent;
+}
+
+.absence-tab a:hover:before,
+.absence-tab a.active:before {
+  width: 100%;
+  background-color: #ff9419;
+}
+
+fieldset {
+  margin-bottom: 30px;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+fieldset legend {
+  padding: 10px;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.fields {
+  display: flex;
+  font-size: 16px;
+}
+
+.fields div {
+  margin-right: 15px;
+}
+
+.fields div:last-child {
+  margin-right: 0;
+}
+
+.fields label {
+  margin-bottom: 5px;
+  display: block;
+  font-weight: 700;
+}
+
+.fields select,
+.fields input {
+  min-width: 150px;
+  padding: 5px 10px;
+  border: 1px solid #333;
+  border-radius: 5px;
+}
+
+table {
+  width: 100%;
+  border: 0;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+table th {
+  background: #ccc;
+}
+
+table th:first-child {
+  border-top-left-radius: 5px;
+}
+
+table th:last-child {
+  border-top-right-radius: 5px;
+}
+
+table th,
+table td {
+  padding: 10px;
+  text-align: left;
+  font-size: 16px;
+}
+
+table td {
+  background: #fff;
+}
+
+table tr:nth-child(odd) td {
+  background: #f8f5f2;
+}
+
+table tr:hover td {
+  background: #ebe4df;
+}
+
+
+table td a {
+  margin-right: 10px;
+  padding: 3px 5px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 14px;
+  color: #333;
+  transition: .2s;
+}
+
+table td a:hover {
+  color: #fff;
+  border-color: #ff9419;
+  background-color: #ff9419;
+}
