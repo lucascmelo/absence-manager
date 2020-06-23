@@ -24,10 +24,10 @@ that I can import them into outlook.
     - [x] Footer
     - [x] Responsive
   - [x] Component Header. Nav: Home, Report
-  - [ ] Page Report
+  - [x] Page Report
     - [x] Component Filter by Name, startDate, endDate, Types, Status
     - [x] Component Grid: Columns: Employee, Type, Status, startDate, endDate, download ics, see note
-    - [ ] Modal with more details admin/members note, Employee, type, startDate, end Date
+    - [x] Modal with more details admin/members note, Employee, type, startDate, end Date
     - [x] Pagination
   = [ ] Create Tests
 
