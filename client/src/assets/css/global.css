@@ -229,22 +229,14 @@ footer li a {
     flex: 1;
   }
 }
+
 @media (max-width: 600px) {
   footer {
     flex-direction: column;
   }
 
+  footer h3,
   footer ul {
     display: none;
-  }
-
-  footer h3:after {
-    content: "▼";
-    margin-left: 10px;
-    font-size: 10px;
-  }
-
-  footer h3:active + ul {
-    display: block;
   }
 }
