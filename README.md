@@ -1,3 +1,12 @@
+## How to use
+
+1. `git clone https://github.com/lucascmelo/absence-manager`
+2. `cd absence-manager/client && yarn && yarn start`
+3. Open new terminal tab
+4. `cd absence-manager/server && yarn && yarn dev:server`
+5. Go to: `http://localhost:3000/`
+
+
 ## User Story
 
 As owner of a crew I want to be able to export my employees absences so 
@@ -29,7 +38,7 @@ that I can import them into outlook.
     - [x] Component Grid: Columns: Employee, Type, Status, startDate, endDate, download ics, see note
     - [x] Modal with more details admin/members note, Employee, type, startDate, end Date
     - [x] Pagination
-  = [ ] Create Tests
+  - [ ] Create Tests
 
 - [ ] Backend (Server)
   - [x] Initialize node project with typescript
