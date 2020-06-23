@@ -153,7 +153,7 @@ const Report: React.FC = () => {
           <tbody>
             {absences.map((absence, index) => {
               let page = Math.ceil((index+1)/10);
-              if(currentPage === page) {
+              if(currentPage == page) {
                 return (
                   <tr data-page={page} key={absence.id} >
                     <td data-title="Name">{absence.employee}</td>
