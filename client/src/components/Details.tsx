@@ -14,12 +14,10 @@ interface Absence {
 const Details = ({data, func}: any) => {
   const absence = data[0];
 
-
-  console.log(absence.employee)
   return (
     <div id="detailsModal">
       <section>
-        <a href="#" className="icon-close" onClick={func}></a>
+        <button type="button" className="icon-close" onClick={func}><span>Close</span></button>
         <h4>Details</h4>
         <ul>
           <li>

@@ -56,6 +56,10 @@ header nav a {
   transition: .2s;
 }
 
+header nav a span {
+  display: none;
+}
+
 #nav-main a:after {
   content: "";
   width: 0;

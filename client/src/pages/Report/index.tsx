@@ -43,7 +43,7 @@ const Report: React.FC = () => {
   }
 
   useEffect(() => {
-    if(nameFilter != "" || typeFilter != "" || statusFilter != "" || startFilter != "" || endFilter != "") {
+    if(nameFilter !== "" || typeFilter !== "" || statusFilter !== "" || startFilter !== "" || endFilter !== "") {
       console.log(startFilter);
       api.get('/absences', {
         params: {
@@ -94,11 +94,11 @@ const Report: React.FC = () => {
         <h2 className="page-title">Absence Management</h2>
 
         <nav className="absence-tab">
-          <a href="#">Calendar</a>
-          <a href="#">Statistics</a>
-          <a href="#">Graph</a>
-          <a href="#">Open Requests</a>
-          <a href="#" className='active'>List</a>
+          <a href="#calendar">Calendar</a>
+          <a href="#statistics">Statistics</a>
+          <a href="#graph">Graph</a>
+          <a href="#requests">Open Requests</a>
+          <a href="#list" className='active'>List</a>
         </nav>
 
         <form>
@@ -153,24 +153,24 @@ const Report: React.FC = () => {
           <tbody>
             {absences.map((absence, index) => {
               let page = Math.ceil((index+1)/10);
-              if(currentPage == page) {
+              if(currentPage === page) {
                 return (
-                <tr data-page={page} key={absence.id} >
-                  <td data-title="Name">{absence.employee}</td>
-                  <td data-title="Absence Types">{absence.type === "vacation" ? "is on vacation" : "is sick"}</td>
-                  <td data-title="Period">
-                    <Moment format="DD/MM/YYYY">{absence.startDate}</Moment> to <Moment format="DD/MM/YYYY">{absence.endDate}</Moment>
-                  </td>
-                  <td data-title="Status">{(absence.confirmedAt == null && absence.rejectedAt == null) ? 'Pending' : (absence.confirmedAt==null) ? 'Rejected' : 'Approved' }</td>
-                  <td>
-                    <a href="#" data-id={absence.id} onClick={handleDownloadICal}> Download Ical</a>
-                    <a href="#" data-id={absence.id} onClick={handleDetails}>See note</a>
-                  </td>
-                </tr>
-                )}
+                  <tr data-page={page} key={absence.id} >
+                    <td data-title="Name">{absence.employee}</td>
+                    <td data-title="Absence Types">{absence.type === "vacation" ? "is on vacation" : "is sick"}</td>
+                    <td data-title="Period">
+                      <Moment format="DD/MM/YYYY">{absence.startDate}</Moment> to <Moment format="DD/MM/YYYY">{absence.endDate}</Moment>
+                    </td>
+                    <td data-title="Status">{(absence.confirmedAt === null && absence.rejectedAt === null) ? 'Pending' : (absence.confirmedAt === null) ? 'Rejected' : 'Approved' }</td>
+                    <td>
+                      <button type="button" data-id={absence.id} onClick={handleDownloadICal}> Download Ical</button>
+                      <button type="button" data-id={absence.id} onClick={handleDetails}>See note</button>
+                    </td>
+                  </tr>
+                )
               }
-            )}
-            {totalPage==0 && (
+            })}
+            {totalPage === 0 && (
               <tr>
                 <td colSpan={5}>We couldn't find anything.</td>
               </tr>
@@ -182,7 +182,7 @@ const Report: React.FC = () => {
           {[...Array(totalPage)].map((x, i) => {
             let page = ++i;
             return (
-              <li key={i} className={(currentPage===page ) ? 'active' : ''} onClick={() => handlePagination(page)}>{page}</li>
+              <li key={i} className={(currentPage === page ) ? 'active' : ''} onClick={() => handlePagination(page)}>{page}</li>
             )
           })}
         </ul>
