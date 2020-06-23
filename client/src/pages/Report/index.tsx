@@ -88,7 +88,7 @@ const Report: React.FC = () => {
 
   return (
     <>
-      {/* {loaded===0 && <Loader />} */}
+      {loaded===0 && <Loader />}
       <Header />
       <section className="container">
         <h2 className="page-title">Absence Management</h2>
