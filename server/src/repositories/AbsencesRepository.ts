@@ -72,10 +72,10 @@ class AbsencesRepository {
   }
 
   public async download(absence: Absence) {
-    const EVENT_PATH = path.join(__dirname, '../files', 'event.ics');
     const startDate = moment(absence.startDate).format('YYYY-M-D').split('-');
     const endDate = moment(absence.endDate).format('YYYY-M-D').split('-');
     const type = absence.type === 'sickness' ? 'is sick' : 'is on vacation';
+    let icsData;
 
     const event = {
       start: startDate,
@@ -88,12 +88,11 @@ class AbsencesRepository {
       if (error) {
         throw new Error(error);
       }
-
-      fs.writeFileSync(EVENT_PATH, value, { flag: 'w' });
+      icsData = value;
     });
 
     return {
-      file: EVENT_PATH,
+      ics: icsData,
       absence: this.absences,
     };
   }

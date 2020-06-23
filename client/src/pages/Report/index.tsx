@@ -4,6 +4,7 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Loader from '../../components/Loader';
 import Moment from 'react-moment';
+import download from 'downloadjs';
 import "./style.css";
 
 interface Absence {
@@ -34,8 +35,7 @@ const Report: React.FC = () => {
 
   function handleDownloadICal(id: number) {
     api.get('/download', {params: {id: id}}).then(response => {
-      console.log(response.data.file)
-      window.open('file:'+response.data.file, 'Download');
+      download(response.data.ics, "event.ics");
     });
   }
 
