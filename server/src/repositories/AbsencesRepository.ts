@@ -12,7 +12,15 @@ class AbsencesRepository {
     this.absences = [];
   }
 
-  public async find({ id, userId, startDate, endDate }: Absence): Absence[] {
+  public async find({
+    id,
+    userId,
+    employee,
+    type,
+    status,
+    startDate,
+    endDate,
+  }: Absence): Absence[] {
     const ABSENCES_PATH = path.join(
       __dirname,
       '../json_files',
@@ -50,6 +58,41 @@ class AbsencesRepository {
       this.absences = this.absences.filter(
         absence => absence.userId === parseInt(userId),
       );
+    }
+
+    if (employee) {
+      this.absences = this.absences.filter(
+        absence =>
+          absence.employee.toLowerCase().indexOf(employee.toLowerCase()) > -1,
+      );
+    }
+
+    if (type) {
+      this.absences = this.absences.filter(absence => absence.type === type);
+    }
+
+    if (status) {
+      switch (status) {
+        case 'approved':
+          this.absences = this.absences.filter(
+            absence => absence.confirmedAt != null,
+          );
+          break;
+        case 'rejected':
+          this.absences = this.absences.filter(
+            absence => absence.rejectedAt != null,
+          );
+          break;
+        case 'pending':
+          this.absences = this.absences.filter(
+            absence =>
+              absence.rejectedAt === null && absence.confirmedAt === null,
+          );
+          break;
+
+        default:
+          break;
+      }
     }
 
     if (startDate) {

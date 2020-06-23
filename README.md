@@ -24,8 +24,8 @@ that I can import them into outlook.
     - [ ] Footer
   - [x] Component Header. Nav: Home, Report
   - [ ] Page Report
-    - [ ] Component Filter by userID or Name, startDate, and endDate
-    - [x] Component Grid: Columns: Employee, Type, startDate, endDate, download ics, see note
+    - [x] Component Filter by Name, startDate, endDate, Types, Status
+    - [x] Component Grid: Columns: Employee, Type, Status, startDate, endDate, download ics, see note
     - [ ] Modal with more details admin/members note, Employee, type, startDate, end Date
     - [x] Pagination
   = [ ] Create Tests

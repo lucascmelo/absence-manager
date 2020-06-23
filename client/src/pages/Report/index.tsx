@@ -13,21 +13,53 @@ interface Absence {
   type: string;
   startDate: Date;
   endDate: Date;
+  confirmedAt: Date;
+  rejectedAt: Date;
 }
 
 const Report: React.FC = () => {
+  const [loaded, setLoaded] = useState<Number>(0);
   const [absences, setAbsences] = useState<Absence[]>([]);
   const [totalPage, setTotalPage] = useState<Number>(0);
   const [currentPage, setCurrentPage] = useState<Number>(1);
 
+  const [nameFilter, setNameFilter] = useState<String>('');
+  const [typeFilter, setTypeFilter] = useState<String>('');
+  const [statusFilter, setStatusFilter] = useState<String>('');
+  const [startFilter, setStartFilter] = useState<String>('');
+  const [endFilter, setEndFilter] = useState<String>('');
+
+  function findAll() {
+    api.get('/absences').then(response => {
+      setTimeout(function(){
+        setLoaded(1);
+      }, 2500); // taking a while to see the loader
+      
+      setAbsences(response.data);
+      setTotalPage(Math.ceil(response.data.length/10));
+    });
+  }
+
   useEffect(() => {
-    setTimeout(function(){
-      api.get('/absences').then(response => {
+    if(nameFilter != "" || typeFilter != "" || statusFilter != "" || startFilter != "" || endFilter != "") {
+      console.log(startFilter);
+      api.get('/absences', {
+        params: {
+          employee: nameFilter,
+          type: typeFilter,
+          status: statusFilter,
+          startDate: startFilter,
+          endDate: endFilter,
+        }
+      }).then(response => {
+        setLoaded(1);
         setAbsences(response.data);
         setTotalPage(Math.ceil(response.data.length/10));
       });
-    }, 2500); // taking a while to see the loader
-  }, []);
+    } else {
+      findAll();
+    }
+  }, [nameFilter, typeFilter, statusFilter, startFilter, endFilter]);
 
   function handlePagination(page: number) {
     setCurrentPage(page);
@@ -41,7 +73,7 @@ const Report: React.FC = () => {
 
   return (
     <>
-      {absences.length==0 && <Loader />}
+      {loaded===0 && <Loader />}
       <Header />
       <section className="container">
         <h2 className="page-title">Absence Management</h2>
@@ -58,36 +90,36 @@ const Report: React.FC = () => {
             <legend>Filter</legend>
             <div className="fields">
               <div>
-                <label htmlFor="">Employee</label>
-                <input type="text"/>
+                <label>Employee</label>
+                <input type="text" onChange={e => setNameFilter(e.target.value)}/>
               </div>
               <div>
-                <label htmlFor="">Absence Types</label>
-                <select name="status">
-                  <option defaultValue="all">All</option>
+                <label>Absence Types</label>
+                <select onChange={e => setTypeFilter(e.target.value)}>
+                  <option value="">All</option>
                   <option value="vacation">Vacation</option>
                   <option value="sickness">Sickness</option>
-                  <option value="compensatory" disabled>Compensatory time off</option>
-                  <option value="education" disabled>Education/Training</option>
-                  <option value="other" disabled>Other absence</option>
+                  <option value="compensatory">Compensatory time off</option>
+                  <option value="education">Education/Training</option>
+                  <option value="other">Other absence</option>
                 </select>
               </div>
               <div>
-                <label htmlFor="">Status</label>
-                <select name="status">
-                  <option defaultValue="all">All</option>
+                <label>Status</label>
+                <select onChange={e => setStatusFilter(e.target.value)}>
+                  <option value="">All</option>
                   <option value="approved">Approved</option>
                   <option value="rejected">Rejected</option>
                   <option value="pending">Pending</option>
                 </select>
               </div>
               <div>
-                <label htmlFor="">Start Date</label>
-                <input type="date"/>
+                <label>Start Date</label>
+                <input type="date" onChange={e => setStartFilter(e.target.value)} />
               </div>
               <div>
-                <label htmlFor="">End Date</label>
-                <input type="date"/>
+                <label>End Date</label>
+                <input type="date" onChange={e => setEndFilter(e.target.value)} />
               </div>
             </div>
           </fieldset>
@@ -98,6 +130,7 @@ const Report: React.FC = () => {
               <th>Name</th>
               <th>Absence Types</th>
               <th>Period</th>
+              <th>Status</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -110,7 +143,9 @@ const Report: React.FC = () => {
                   <td>{absence.employee}</td>
                   <td>{absence.type === "vacation" ? "is on vacation" : "is sick"}</td>
                   <td>
-                    <Moment format="DD/MM/YYYY">{absence.startDate}</Moment> to <Moment format="DD/MM/YYYY">{absence.endDate}</Moment></td>
+                    <Moment format="DD/MM/YYYY">{absence.startDate}</Moment> to <Moment format="DD/MM/YYYY">{absence.endDate}</Moment>
+                  </td>
+                  <td>{(absence.confirmedAt == null && absence.rejectedAt == null) ? 'Pending' : (absence.confirmedAt==null) ? 'Rejected' : 'Approved' }</td>
                   <td>
                     <a href="#" onClick={() => handleDownloadICal(absence.id)}> Download Ical</a>
                     <a href="#notes" data-id={absence.id}>See note</a>
@@ -118,6 +153,11 @@ const Report: React.FC = () => {
                 </tr>
                 )}
               }
+            )}
+            {totalPage==0 && (
+              <tr>
+                <td colSpan={5}>We couldn't find anything.</td>
+              </tr>
             )}
           </tbody>
         </table>

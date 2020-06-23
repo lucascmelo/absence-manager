@@ -7,9 +7,19 @@ const absencesRepository = new AbsencesRepository();
 
 absencesRouter.get('/absences', async (request, response) => {
   try {
-    const { userId = null, startDate = null, endDate = null } = request.query;
+    const {
+      userId = null,
+      employee = null,
+      type = null,
+      status = null,
+      startDate = null,
+      endDate = null,
+    } = request.query;
     const absences = await absencesRepository.find({
       userId,
+      employee,
+      type,
+      status,
       startDate,
       endDate,
     });

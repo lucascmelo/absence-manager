@@ -15,6 +15,12 @@ class Absence {
 
   adminNote: string;
 
+  status: string;
+
+  confirmedAt: Date;
+
+  rejectedAt: Date;
+
   constructor({
     id,
     userId,
@@ -24,6 +30,9 @@ class Absence {
     type,
     memberNote,
     adminNote,
+    status,
+    confirmedAt,
+    rejectedAt,
   }: Absence) {
     this.id = id;
     this.userId = userId;
@@ -33,6 +42,9 @@ class Absence {
     this.type = type;
     this.memberNote = memberNote;
     this.adminNote = adminNote;
+    this.status = status;
+    this.confirmedAt = confirmedAt;
+    this.rejectedAt = rejectedAt;
   }
 }
 
