@@ -6,6 +6,10 @@
 4. `cd absence-manager/server && yarn && yarn dev:server`
 5. Go to: `http://localhost:3000/`
 
+## Preview
+![Layout](https://hospedagem.lucascavalcanti.com.br/layout2.gif)
+
+
 
 ## User Story
 
